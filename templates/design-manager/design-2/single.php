@@ -3,7 +3,7 @@
 <html amp>
 <head>
 	<meta charset="utf-8">
-    <link rel="dns-prefetch" href="https://cdn.ampproject.org">
+    <link rel="preconnect" href="https://cdn.ampproject.org">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 	<?php do_action( 'amp_post_template_head', $this ); ?>
 	<style amp-custom>
@@ -34,10 +34,10 @@ if( $options ) {
 	if( in_array('comments:0',$values) ) {
 		button_code();
 		$count++;
-		}
 }
 if($count === 0 && $comments_count->approved == 0) {
 	button_code();
+	}
 }
 ?>
 		<?php do_action('ampforwp_post_after_design_elements') ?>
@@ -50,6 +50,7 @@ if($count === 0 && $comments_count->approved == 0) {
 
 <?php
 function button_code() { global $redux_builder_amp ;?>
+	<?php if( !comments_open() ) { return; } ?>
 	<div class="comment-button-wrapper">
 			<a href="<?php echo get_permalink().'#commentform' ?>"><?php esc_html_e( $redux_builder_amp['amp-translator-leave-a-comment-text']  ); ?></a>
 	</div>

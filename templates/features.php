@@ -629,6 +629,10 @@ function ampforwp_register_additional_scripts() {
 					);
 					$metadata['headline'] = $structured_data_archive_title;
 			}
+			if ($metadata['image']['width'] < 696) {
+				$metadata['image']['width'] = 700;
+                        }
+
 			return $metadata;
 	}
 
