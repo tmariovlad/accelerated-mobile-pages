@@ -8,8 +8,9 @@
 	if (! function_exists( 'ampforwp_menu') ) {
 		function ampforwp_menu() {
 		  register_nav_menus(
-		    array(
+		    array( 
 		      'amp-menu' => __( 'AMP Menu','ampforwp' ),
+		      'amp-footer-menu' => __( 'AMP Footer Menu','ampforwp' ),
 		    )
 		  );
 		}
