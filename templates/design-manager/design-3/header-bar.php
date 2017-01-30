@@ -1,9 +1,32 @@
 <amp-sidebar id='sidebar'
     layout="nodisplay"
     side="left">
-  <div class="toggle-navigationv2">
-      <div role="button" tabindex="0" on='tap:sidebar.close' class="close-nav">X</div>
-      <?php wp_nav_menu( array( 'theme_location' => 'amp-menu' ) ); ?>
+    <?php global $redux_builder_amp; ?>
+    <div class="toggle-navigationv2">
+      <div class="navigation_heading"><?php echo esc_html( $redux_builder_amp['amp-translator-navigate-text'] ); ?></div> 
+      <?php
+      wp_nav_menu( array(
+          'theme_location' => 'amp-menu',
+          'walker' => new AMPforWP_Menu_Walker()
+                        ) ); ?>
+          <div class="social_icons">
+            <ul>
+                <li class="icon-twitter"></li>  
+                <li class="icon-facebook"></li>  
+                <li class="icon-pinterest"></li>  
+                <li class="icon-google-plus"></li>  
+                <li class="icon-linkedin"></li>  
+                <li class="icon-youtube-play"></li>  
+                <li class="icon-instagram"></li>  
+                <li class="icon-tumblr"></li>  
+                <li class="icon-vk"></li>  
+                <li class="icon-whatsapp"></li>  
+                <li class="icon-reddit-alien"></li>  
+                <li class="icon-snapchat-ghost"></li>  
+            </ul>
+          </div>
+
+      
   </div>
 </amp-sidebar>
 
