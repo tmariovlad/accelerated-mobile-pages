@@ -138,13 +138,19 @@ function ampforwp_register_additional_scripts_designthree() { ?>
 <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
 <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
 <?php if( is_home() ) { ?><script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+
 <?php } }
+
+
 
 // Search Form
 function ampforwp_get_search_form() {
-	$form = '<form role="search" method="get" id="searchform" class="searchform" target="_top" action="' .  trailingslashit( get_bloginfo('url') ) . '?' . AMP_QUERY_VAR . '">
+    $form = '<form role="search" method="get" id="searchform" class="searchform" target="_top" action="' . get_bloginfo('url')  .'">
                 <div>
                     <label class="screen-reader-text" for="s">' . _x( 'Type your search query and hit enter:', 'label' ) . '</label>
+                    <input type="text" placeholder="AMP" value="1" name="amp" class="hide" id="ampsomething" />
                     <input type="text" placeholder="Type here" value="' . get_search_query() . '" name="s" id="s" />
                     <input type="submit" id="searchsubmit" value="'. esc_attr_x( 'Search', 'submit button' ) .'" />
                 </div>
@@ -152,21 +158,8 @@ function ampforwp_get_search_form() {
     return $form;        
 }
 function ampforwp_the_search_form() {
-	echo ampforwp_get_search_form();
+    echo ampforwp_get_search_form();
 }
-function advanced_search_query($query) {
-	$ampforwp_is_amp_endpoint = ampforwp_is_amp_endpoint();
-		if ( ! $ampforwp_is_amp_endpoint ) {
-			return $query;
-		}	 
-		if($query->is_search() ) {
-			$query->set( 'amp', '1' );
-		}
-}
-function addfdsfsfbnsdfkhf() {
-	add_action('pre_get_posts', 'advanced_search_query', 1000);
-}
-add_action('pre_amp_render_post','addfdsfsfbnsdfkhf');
 
 
 function ampforwp_additional_style_input_2( $amp_template ) {
@@ -1442,6 +1435,7 @@ amp-lightbox{
     line-height: 20px;
     text-align: center;
 }
+#ampsomething { display: none; }
 /* Custom Style Code */
 	<?php echo $redux_builder_amp['css_editor'];
 } ?>
