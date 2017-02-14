@@ -116,7 +116,7 @@
 	          //dont Echo anything
 	        } else {
 				$supported_types = array('post','page');
-				if ( $redux_builder_amp['ampforwp-custom-type'] ) {
+				if ( isset($redux_builder_amp['ampforwp-custom-type']) ) {
 					foreach($redux_builder_amp['ampforwp-custom-type'] as $custom_post){
 						$supported_types[] = $custom_post;
 					}
